@@ -33,7 +33,7 @@ public class Farmaceutico {
         return cedula;
     }
 
-    /**
+    /** ola angel..
      * @param cedula the cedula to set
      */
     public void setCedula(String cedula) {
