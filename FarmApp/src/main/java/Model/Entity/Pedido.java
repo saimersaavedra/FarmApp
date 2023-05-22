@@ -3,7 +3,7 @@ package Model.Entity;
 import java.sql.Date;
 
 public class Pedido {
-    private int pedido;
+    private int id;
     private String direccion;
     private String cliente;
     private Date Fecha;
@@ -13,14 +13,14 @@ public class Pedido {
      * @return the pedido
      */
     public int getPedido() {
-        return pedido;
+        return id;
     }
 
     /**
-     * @param pedido the pedido to set
+     * @param id the pedido to set
      */
-    public void setPedido(int pedido) {
-        this.pedido = pedido;
+    public void setPedido(int id) {
+        this.id = id;
     }
 
     /**
