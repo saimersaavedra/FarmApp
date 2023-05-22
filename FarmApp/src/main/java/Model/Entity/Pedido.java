@@ -6,20 +6,35 @@ public class Pedido {
     private int id;
     private String direccion;
     private String cliente;
-    private Date Fecha;
+    private String Fecha;
     private float total;
+
+    public Pedido(int id, String direccion, String cliente, String Fecha, float total) {
+        this.id = id;
+        this.direccion = direccion;
+        this.cliente = cliente;
+        this.Fecha = Fecha;
+        this.total = total;
+    }
+
+    public Pedido(int id) {
+        this.id = id;
+    }
+
+    public Pedido() {
+    }
 
     /**
      * @return the pedido
      */
-    public int getPedido() {
+    public int getId() {
         return id;
     }
 
     /**
      * @param id the pedido to set
      */
-    public void setPedido(int id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -54,14 +69,14 @@ public class Pedido {
     /**
      * @return the Fecha
      */
-    public Date getFecha() {
+    public String getFecha() {
         return Fecha;
     }
 
     /**
      * @param Fecha the Fecha to set
      */
-    public void setFecha(Date Fecha) {
+    public void setFecha(String Fecha) {
         this.Fecha = Fecha;
     }
 
