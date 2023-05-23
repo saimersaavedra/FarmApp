@@ -3,7 +3,9 @@ package Model.Dao;
 import Model.Entity.Pedido;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -49,7 +51,44 @@ public class PedidoDao implements IPedido {
 
     @Override
     public List<Pedido> consultar() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+           Connection connection = null;
+           PreparedStatement sentencia = null;
+           ResultSet resultado = null;
+           List<Pedido> pedidos = new ArrayList();
+        try {
+            
+            connection = BaseDatos.getConnection();
+            sentencia = connection.prepareStatement(SQL_CONSULTAR);
+            resultado = sentencia.executeQuery();
+            while(resultado.next())
+            {
+                int id = resultado.getInt("id_pedido");
+                String direccion = resultado.getString("direccion");
+                String cliente = resultado.getString("cliente");
+                String fecha = resultado.getString("fecha");
+                float total = resultado.getFloat("total");
+                Pedido pedido = new Pedido(id, direccion, cliente, fecha, total);
+                pedidos.add(pedido);
+                        
+            }
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(PedidoDao.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(PedidoDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally
+        {
+               try {
+                   BaseDatos.close(resultado);
+                   BaseDatos.close(sentencia);
+                   BaseDatos.close(connection);
+               } catch (SQLException ex) {
+                   Logger.getLogger(PedidoDao.class.getName()).log(Level.SEVERE, null, ex);
+               }
+           
+        }
+           return sitios;
     }
 
     @Override
