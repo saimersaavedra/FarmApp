@@ -10,6 +10,9 @@ import java.util.logging.Logger;
 import red.BaseDatos;
 
 public class PedidoDao implements IPedido {
+    final static String SQL_BORRAR = "DELETE FROM pedido WHERE id_pedido = ?";
+    final static String SQL_ACTUALIZAR = "UPDATE producto SET direccion = ?, cliente = ?, fechaPedido = ?, total = ? WHERE id_pedido = ?";
+    final static String SQL_CONSULTAR = "SELECT * FROM pedido";
     final static String SQL_INSERTAR = "INSERT INTO pedido(id_pedido, direccion, cliente, fechaPedido, total) VALUES(?,?,?,?,?)";
     //int id, String direccion, String cliente, Date Fecha, float total
     @Override
@@ -56,12 +59,69 @@ public class PedidoDao implements IPedido {
 
     @Override
     public int borrar(Pedido pedido) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+  Connection connection = null;
+        PreparedStatement sentencia = null;
+        int resultado = 0;
+        try {
+            connection = BaseDatos.getConnection();
+            sentencia = connection.prepareStatement(SQL_BORRAR);
+
+            sentencia.setInt(1, pedido.getId());
+            resultado = sentencia.executeUpdate();
+            
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(PedidoDao.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(PedidoDao.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        
+        finally
+        {
+               try {
+                   BaseDatos.close(sentencia);
+                   BaseDatos.close(connection);
+               } catch (SQLException ex) {
+                   Logger.getLogger(PedidoDao.class.getName()).log(Level.SEVERE, null, ex);
+               }
+           
+        }
+        
+        return resultado;
     }
 
     @Override
-    public int actualizar(Pedido pedido) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public int actualizar(Pedido pedi) {
+Connection connection = null;
+            PreparedStatement sentencia = null;
+            int resultado = 0;
+        try {
+            connection = BaseDatos.getConnection();
+            sentencia = connection.prepareStatement(SQL_ACTUALIZAR);
+  
+            sentencia.setString(1, pedi.getDireccion());
+            sentencia.setString(2, pedi.getCliente());
+            sentencia.setString(3, pedi.getFecha());
+            sentencia.setFloat(4,pedi.getTotal());
+            sentencia.setInt(5,pedi.getId());
+            resultado = sentencia.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(PedidoDao.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(PedidoDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         finally
+        {
+               try {
+                   BaseDatos.close(sentencia);
+                   BaseDatos.close(connection);
+               } catch (SQLException ex) {
+                   Logger.getLogger(PedidoDao.class.getName()).log(Level.SEVERE, null, ex);
+               }
+           
+        }
+        return resultado;
     }
 
 }
