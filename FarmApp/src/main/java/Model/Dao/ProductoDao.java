@@ -103,7 +103,7 @@ public class ProductoDao implements IProducto {
            Connection connection = null;
            PreparedStatement sentencia = null;
            ResultSet resultado = null;
-           Producto rProd = null;
+           Producto rProducto = null;
         try {
             
                 connection = BaseDatos.getConnection();
@@ -111,7 +111,6 @@ public class ProductoDao implements IProducto {
                 sentencia.setInt(1, producto.getId());
                 resultado = sentencia.executeQuery();
                 resultado.absolute(1);
-                
                 int id = resultado.getInt("id_producto");
                 String nombre = resultado.getString("nombre");
                 String referencia = resultado.getString("referencia");
@@ -120,7 +119,7 @@ public class ProductoDao implements IProducto {
                 String fecha = resultado.getString("fecha_vencimiento");
                 String imagen = resultado.getString("imagen");
                 float precio = resultado.getFloat("precio");
-                rProd = new Producto(id,nombre, referencia, caracteristicas, efectosSecundarios, fecha,imagen, precio);
+                 rProducto = new Producto(id,nombre, referencia, caracteristicas, efectosSecundarios, fecha,imagen, precio);
             
            
         } catch (SQLException ex) {
@@ -139,7 +138,7 @@ public class ProductoDao implements IProducto {
                }
            
         }
-           return rProd;
+           return rProducto;
     }
     @Override
     public List<Producto> buscarRef(String columna,String ref) {

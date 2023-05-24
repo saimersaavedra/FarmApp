@@ -12,10 +12,10 @@ import java.util.logging.Logger;
 import red.BaseDatos;
 
 public class FarmaceuticoDao implements IFarmaceutico {
-        final static String SQL_BORRAR = "DELETE FROM Farmaceutico WHERE id = ?";
+        final static String SQL_BORRAR = "DELETE FROM Farmaceutico WHERE cedula = ?";
         final static String SQL_ACTUALIZAR = "UPDATE producto SET  nombre = ?, apellido = ?, telefono = ?, correo = ?, direccion = ?, nivel =? WHERE cedula = ?";
         final static String SQL_CONSULTAR = "SELECT * FROM Farmaceutico";
-        final static String SQL_CONSULTARID = "SELECT * FROM Farmaceutico WHERE id = ?";
+        final static String SQL_CONSULTARID = "SELECT * FROM Farmaceutico WHERE cedula = ?";
         final static String SQL_INSERTAR = "INSERT INTO Farmaceutico(cedula,nombre,apellido,telefono,correo,direccion,nivel) VALUES(?,?,?,?,?,?,?)";
  //String cedula, String nombre, String apellido, String telefono, String correo, String direccion, String nivel
     @Override

@@ -1,7 +1,7 @@
 package api;
 
-import Model.Dao.FarmaceuticoDao;
-import Model.Entity.Farmaceutico;
+import Model.Dao.PedidoDao;
+import Model.Entity.Pedido;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -15,43 +15,43 @@ import jakarta.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.List;
 
-@Path("/apifarmaceutico")
-public class FarmaceuticoResource {
-    FarmaceuticoDao farmaDao = new FarmaceuticoDao();
+@Path("/apipedidos")
+
+public class PedidoResource {
+     PedidoDao pedidoDao = new PedidoDao();
     
     @GET
-    @Path("/farmaceutico")
+    @Path("/pedido")
     public Response consultar()
     {
-        List<Farmaceutico> farmas = new ArrayList<>();
-        farmas = farmaDao.consultar();
+        List<Pedido> pedido = new ArrayList<>();
+        pedido = pedidoDao.consultar();
          return Response
                 .status(200)
                 .header("Access-Control-Allow-Origin", "*")
-                .entity(farmas)
+                .entity(pedido)
                 .build();
     }
    @GET
-   @Path("/farmaceutico/{cedula}")
+   @Path("/pedido/{id_pedido}")
    @Produces(MediaType.APPLICATION_JSON)
-    public Response consultarId(@PathParam("cedula") String cedula){
-        Farmaceutico farma = new Farmaceutico(cedula);
+    public Response consultarId(@PathParam("id_pedido") int id_pedido){
+        Pedido pedido = new Pedido(id_pedido);
         return Response
                 .status(200)
                 .header("Access-Control-Allow-Origin", "*")
-                .entity(farmaDao.consultarId(farma))
+                .entity(pedidoDao.consultarId(pedido))
                 .build();
     }
      @POST
-    @Path("/farmaceutico")
+    @Path("/pedido")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response crear(Farmaceutico farma)
-            
+    public Response crear(Pedido pedido)     
     {
         try{
-            farmaDao.Insertar(farma);
-            return Response.status(Response.Status.CREATED).entity(farma).build();
+            pedidoDao.Insertar(pedido);
+            return Response.status(Response.Status.CREATED).entity(pedido).build();
         }
         catch(Exception ex)
         {
@@ -59,29 +59,29 @@ public class FarmaceuticoResource {
         } 
     } 
      @DELETE
-    @Path("/farmaceutico/{cedula}")
+    @Path("/pedido/{id_pedido}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response borrar(@PathParam("cedula") String cedula) {
-        Farmaceutico farma = new Farmaceutico(cedula);
-        int i = farmaDao.borrar(farma);
+    public Response borrar(@PathParam("id_pedido") int id_pedido) {
+        Pedido pedido = new Pedido(id_pedido);
+        int i = pedidoDao.borrar(pedido);
         if (i == 0) {
             return Response
                     .status(Response.Status.BAD_REQUEST)
                     .header("Access-Control-Allow-Origin", "*")
-                    .entity("farmaceutico not found")
+                    .entity("pedido not found")
                     .build();
         } else {
             return Response.ok("Correcto").build();
         }
     }
-    @Path("/farmaceutico")
+    @Path("/pedido")
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response actualizar(Farmaceutico farma) {
+    public Response actualizar(Pedido pedido) {
        try{
-            farmaDao.actualizar(farma);
-            return Response.status(Response.Status.CREATED).entity(farma).build();
+            pedidoDao.actualizar(pedido);
+            return Response.status(Response.Status.CREATED).entity(pedido).build();
         }
         catch(Exception ex)
         {

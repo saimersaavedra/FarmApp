@@ -1,7 +1,7 @@
 package api;
 
-import Model.Dao.FarmaceuticoDao;
-import Model.Entity.Farmaceutico;
+import Model.Dao.ProductoDao;
+import Model.Entity.Producto;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -15,43 +15,55 @@ import jakarta.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.List;
 
-@Path("/apifarmaceutico")
-public class FarmaceuticoResource {
-    FarmaceuticoDao farmaDao = new FarmaceuticoDao();
+@Path("/apiproductos")
+
+public class ProductoResource {
+      ProductoDao producDao = new ProductoDao();
     
     @GET
-    @Path("/farmaceutico")
+    @Path("/producto")
     public Response consultar()
     {
-        List<Farmaceutico> farmas = new ArrayList<>();
-        farmas = farmaDao.consultar();
+        List<Producto> produc = new ArrayList<>();
+        produc = producDao.consultar();
          return Response
                 .status(200)
                 .header("Access-Control-Allow-Origin", "*")
-                .entity(farmas)
+                .entity(produc)
                 .build();
     }
    @GET
-   @Path("/farmaceutico/{cedula}")
+   @Path("/producto/{id_producto}")
    @Produces(MediaType.APPLICATION_JSON)
-    public Response consultarId(@PathParam("cedula") String cedula){
-        Farmaceutico farma = new Farmaceutico(cedula);
+    public Response consultarId(@PathParam("id_producto") int id_producto){
+        Producto producto = new Producto(id_producto);
         return Response
                 .status(200)
                 .header("Access-Control-Allow-Origin", "*")
-                .entity(farmaDao.consultarId(farma))
+                .entity(producDao.consultarId(producto))
+                .build();
+    }
+    @GET
+   @Path("/producto/referencia/{referencia}")
+   @Produces(MediaType.APPLICATION_JSON)
+    public Response buscarReferencia(@PathParam("referencia") String referencia){
+        Producto producto = new Producto(referencia);
+        return Response
+                .status(200)
+                .header("Access-Control-Allow-Origin", "*")
+                .entity(producDao.buscarRef("referencia", referencia))
                 .build();
     }
      @POST
-    @Path("/farmaceutico")
+    @Path("/producto")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response crear(Farmaceutico farma)
+    public Response crear(Producto producto)
             
     {
         try{
-            farmaDao.Insertar(farma);
-            return Response.status(Response.Status.CREATED).entity(farma).build();
+            producDao.Insertar(producto);
+            return Response.status(Response.Status.CREATED).entity(producto).build();
         }
         catch(Exception ex)
         {
@@ -59,29 +71,29 @@ public class FarmaceuticoResource {
         } 
     } 
      @DELETE
-    @Path("/farmaceutico/{cedula}")
+    @Path("/producto/{id_producto}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response borrar(@PathParam("cedula") String cedula) {
-        Farmaceutico farma = new Farmaceutico(cedula);
-        int i = farmaDao.borrar(farma);
+    public Response borrar(@PathParam("id_producto") int id_producto) {
+        Producto producto = new Producto(id_producto);
+        int i = producDao.borrar(producto);
         if (i == 0) {
             return Response
                     .status(Response.Status.BAD_REQUEST)
                     .header("Access-Control-Allow-Origin", "*")
-                    .entity("farmaceutico not found")
+                    .entity("producto not found")
                     .build();
         } else {
             return Response.ok("Correcto").build();
         }
     }
-    @Path("/farmaceutico")
+    @Path("/producto")
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response actualizar(Farmaceutico farma) {
+    public Response actualizar(Producto producto) {
        try{
-            farmaDao.actualizar(farma);
-            return Response.status(Response.Status.CREATED).entity(farma).build();
+            producDao.actualizar(producto);
+            return Response.status(Response.Status.CREATED).entity(producto).build();
         }
         catch(Exception ex)
         {
