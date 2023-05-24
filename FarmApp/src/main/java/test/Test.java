@@ -12,13 +12,7 @@ import java.util.List;
 public class Test {
       public static void main(String[] args) {
      /* TEST */
-        ProductoDao producDao = new ProductoDao();
-        List<Producto> productos = new ArrayList();
-       // CONSULTAR
-        productos = producDao.buscarRef(1);
-        for (Producto produc : productos) {
-            System.out.println(produc.getCaracteristicas());
-        }
+        
         
       /*
           Test Farmaceutico
@@ -44,6 +38,13 @@ public class Test {
         productos = producDao.consultar();
         for (Producto produc : productos) {
             System.out.println(produc.getNombre());
+        }
+        ProductoDao producDao = new ProductoDao();
+        List<Producto> productos = new ArrayList();
+       // CONSULTAR_REFERENCIA
+        productos = producDao.buscarRef("fecha_vencimiento","ayer");
+        for (Producto produc : productos) {
+            System.out.println(produc.toString());
         }
       */
        /*

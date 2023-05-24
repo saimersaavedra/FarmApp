@@ -142,7 +142,7 @@ public class ProductoDao implements IProducto {
            return rProd;
     }
     @Override
-    public List<Producto> buscarRef(int ref) {
+    public List<Producto> buscarRef(String columna,String ref) {
         Connection connection = null;
         Statement sentencia = null;
         ResultSet resultado = null;
@@ -152,7 +152,7 @@ public class ProductoDao implements IProducto {
             
             connection = BaseDatos.getConnection();
             sentencia = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.TYPE_FORWARD_ONLY);
-            resultado = sentencia.executeQuery( "SELECT * FROM producto WHERE referencia LIKE '%"+ref+"%'");
+            resultado = sentencia.executeQuery( "SELECT * FROM producto WHERE "+columna+" LIKE '%"+ref+"%'");
             
             while(resultado.next())
             {
