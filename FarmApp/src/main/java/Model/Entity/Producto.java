@@ -11,12 +11,21 @@ public class Producto {
     private String fecha;
     private String imagen;
     private float precio;
-
+    
     public Producto(int id) {
         this.id = id;
     }
 
+    public Producto(String referencia) {
+        this.referencia = referencia;
+    }
+
     public Producto() {
+    }
+
+    @Override
+    public String toString() {
+        return "Producto{" + "id=" + id + ", nombre=" + nombre + ", referencia=" + referencia + ", caracteristicas=" + caracteristicas + ", efectSecundarios=" + efectSecundarios + ", fecha=" + fecha + ", imagen=" + imagen + ", precio=" + precio + '}';
     }
 
     public Producto(int id, String nombre, String referencia, String caracteristicas, String efectSecundarios, String fecha, String imagen, float precio) {

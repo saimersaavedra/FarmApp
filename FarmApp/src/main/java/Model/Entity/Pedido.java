@@ -8,7 +8,16 @@ public class Pedido {
     private String cliente;
     private String Fecha;
     private float total;
+    private Farmaceutico farmaceutico;
 
+    public Pedido(int id, String direccion, String cliente, String Fecha, float total, Farmaceutico farmaceutico) {
+        this.id = id;
+        this.direccion = direccion;
+        this.cliente = cliente;
+        this.Fecha = Fecha;
+        this.total = total;
+        this.farmaceutico = farmaceutico;
+    }
     public Pedido(int id, String direccion, String cliente, String Fecha, float total) {
         this.id = id;
         this.direccion = direccion;
@@ -16,7 +25,6 @@ public class Pedido {
         this.Fecha = Fecha;
         this.total = total;
     }
-
     public Pedido(int id) {
         this.id = id;
     }
@@ -24,6 +32,7 @@ public class Pedido {
     public Pedido() {
     }
 
+  
     /**
      * @return the pedido
      */
@@ -92,6 +101,20 @@ public class Pedido {
      */
     public void setTotal(float total) {
         this.total = total;
+    }
+
+    /**
+     * @return the farmaceutico
+     */
+    public Farmaceutico getFarmaceutico() {
+        return farmaceutico;
+    }
+
+    /**
+     * @param farmaceutico the farmaceutico to set
+     */
+    public void setFarmaceutico(Farmaceutico farmaceutico) {
+        this.farmaceutico = farmaceutico;
     }
     
 }

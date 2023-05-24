@@ -6,19 +6,60 @@ import Model.Dao.ProductoDao;
 import Model.Entity.Farmaceutico;
 import Model.Entity.Pedido;
 import Model.Entity.Producto;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Test {
       public static void main(String[] args) {
-     
+     /* TEST */
+        ProductoDao producDao = new ProductoDao();
+        List<Producto> productos = new ArrayList();
+       // CONSULTAR
+        productos = producDao.buscarRef(1);
+        for (Producto produc : productos) {
+            System.out.println(produc.getCaracteristicas());
+        }
+        
       /*
           Test Farmaceutico
-      FarmaceuticoDao farmaDao = new FarmaceuticoDao();
-      Farmaceutico uno = new Farmaceutico("1111","Saimer","Saavedra","3115442","saimer@","Av 1","Jefe");
-      //INSERTAR
-          System.out.println("Resultado " + farmaDao.Insertar(uno));
+        Farmaceutico uno = new Farmaceutico("1111","Saimer","Saavedra","3115442","saimer@","Av 1","Jefe");
+        FarmaceuticoDao farmaDao = new FarmaceuticoDao();
+        INSERTAR
+        System.out.println("Resultado " + farmaDao.Insertar(uno));
+        List<Farmaceutico> farmaceuticos = new ArrayList();
+       // CONSULTAR
+        farmaceuticos = farmaDao.consultar();
+        for (Farmaceutico farma : farmaceuticos) {
+            System.out.println(farma.getNombre());
+        }
+       
      */
-        ProductoDao producDao = new ProductoDao();
-        Producto tres = new Producto(2, "Atamen", "1 - fiebre", "cura dolor de cabeza", "malestar xd", "Ayer", "asodka", 500);
-          System.out.println("Resultado eliminado: "+producDao.borrar(tres));
+      /*
+          Test Producto
+
+        INSERTAR
+        System.out.println("Resultado: "+producDao.Insertar(tres));
+        List<Producto> productos = new ArrayList();
+       // CONSULTAR
+        productos = producDao.consultar();
+        for (Producto produc : productos) {
+            System.out.println(produc.getNombre());
+        }
+      */
+       /*
+          Test Pedido
+        Pedido dos = new Pedido(1,"av 2", "saimer","hoy",25,uno);
+        PedidoDao pedidoDao = new PedidoDao();
+
+        INSERTAR
+        pedidoDao.Insertar(dos);
+         List<Pedido> pedidos = new ArrayList();
+        // CONSULTAR
+        pedidos = pedidoDao.consultar();
+        for (Pedido pedid : pedidos) {
+            System.out.println(pedid.getFarmaceutico().getCedula());
+        }
+      
+      */ 
     }
 }
