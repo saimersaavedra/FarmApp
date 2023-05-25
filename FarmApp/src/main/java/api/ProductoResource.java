@@ -28,7 +28,6 @@ public class ProductoResource {
         produc = producDao.consultar();
          return Response
                 .status(200)
-                .header("Access-Control-Allow-Origin", "*")
                 .entity(produc)
                 .build();
     }
@@ -39,7 +38,6 @@ public class ProductoResource {
         Producto producto = new Producto(id_producto);
         return Response
                 .status(200)
-                .header("Access-Control-Allow-Origin", "*")
                 .entity(producDao.consultarId(producto))
                 .build();
     }
@@ -50,7 +48,6 @@ public class ProductoResource {
         Producto producto = new Producto(referencia);
         return Response
                 .status(200)
-                .header("Access-Control-Allow-Origin", "*")
                 .entity(producDao.buscarRef("referencia", referencia))
                 .build();
     }
@@ -79,7 +76,6 @@ public class ProductoResource {
         if (i == 0) {
             return Response
                     .status(Response.Status.BAD_REQUEST)
-                    .header("Access-Control-Allow-Origin", "*")
                     .entity("producto not found")
                     .build();
         } else {

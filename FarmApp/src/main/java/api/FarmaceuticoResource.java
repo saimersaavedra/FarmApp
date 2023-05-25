@@ -27,7 +27,6 @@ public class FarmaceuticoResource {
         farmas = farmaDao.consultar();
          return Response
                 .status(200)
-                .header("Access-Control-Allow-Origin", "*")
                 .entity(farmas)
                 .build();
     }
@@ -38,7 +37,6 @@ public class FarmaceuticoResource {
         Farmaceutico farma = new Farmaceutico(cedula);
         return Response
                 .status(200)
-                .header("Access-Control-Allow-Origin", "*")
                 .entity(farmaDao.consultarId(farma))
                 .build();
     }
@@ -67,7 +65,6 @@ public class FarmaceuticoResource {
         if (i == 0) {
             return Response
                     .status(Response.Status.BAD_REQUEST)
-                    .header("Access-Control-Allow-Origin", "*")
                     .entity("farmaceutico not found")
                     .build();
         } else {

@@ -28,7 +28,6 @@ public class PedidoResource {
         pedido = pedidoDao.consultar();
          return Response
                 .status(200)
-                .header("Access-Control-Allow-Origin", "*")
                 .entity(pedido)
                 .build();
     }
@@ -39,7 +38,6 @@ public class PedidoResource {
         Pedido pedido = new Pedido(id_pedido);
         return Response
                 .status(200)
-                .header("Access-Control-Allow-Origin", "*")
                 .entity(pedidoDao.consultarId(pedido))
                 .build();
     }
@@ -67,7 +65,6 @@ public class PedidoResource {
         if (i == 0) {
             return Response
                     .status(Response.Status.BAD_REQUEST)
-                    .header("Access-Control-Allow-Origin", "*")
                     .entity("pedido not found")
                     .build();
         } else {
