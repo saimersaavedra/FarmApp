@@ -14,11 +14,11 @@ import java.util.logging.Logger;
 import red.BaseDatos;
 
 public class ProductoDao implements IProducto {
-    final static String SQL_INSERTAR = "INSERT INTO producto(nit, nombre, referencia, caracteristicas, efectos_secundarios, imagen,fecha_vencimiento,precio, calidad, nivelPrecio) VALUES(?,?,?,?,?,?,?,,?,?,?)";
-    final static String SQL_BORRAR = "DELETE FROM producto WHERE nit = ?";
-    final static String SQL_ACTUALIZAR = "UPDATE producto SET nombre = ?, referencia = ?, caracteristicas = ?, efectos_secundarios = ?, imagen = ?, fecha_vencimiento = ?, precio =?, calidad = ?, nivelPrecio = ? WHERE nit = ?";
+    final static String SQL_INSERTAR = "INSERT INTO producto(idproducto, nombre, referencia, caracteristicas, efectos_secundarios, imagen,fecha_vencimiento,precio, calidad, nivelPrecio) VALUES(?,?,?,?,?,?,?,,?,?,?)";
+    final static String SQL_BORRAR = "DELETE FROM producto WHERE idproducto = ?";
+    final static String SQL_ACTUALIZAR = "UPDATE producto SET nombre = ?, referencia = ?, caracteristicas = ?, efectos_secundarios = ?, imagen = ?, fecha_vencimiento = ?, precio =?, calidad = ?, nivelPrecio = ? WHERE idproducto = ?";
     final static String SQL_CONSULTAR = "SELECT * FROM producto";
-    final static String SQL_CONSULTARID = "SELECT * FROM producto WHERE nit = ?";
+    final static String SQL_CONSULTARID = "SELECT * FROM producto WHERE idproducto = ?";
     @Override
     public int Insertar(Producto producto) {
         Connection connection = null;
@@ -69,7 +69,7 @@ public class ProductoDao implements IProducto {
             resultado = sentencia.executeQuery();
             while(resultado.next())
             {
-                int nit = resultado.getInt("nit");
+                int nit = resultado.getInt("idproducto");
                 String nombre = resultado.getString("nombre");
                 String referencia = resultado.getString("referencia");
                 String caracteristicas = resultado.getString("caracteristicas");
@@ -116,7 +116,7 @@ public class ProductoDao implements IProducto {
                 sentencia.setInt(1, producto.getId());
                 resultado = sentencia.executeQuery();
                 resultado.absolute(1);
-                int nit = resultado.getInt("nit");
+                int nit = resultado.getInt("idproducto");
                 String nombre = resultado.getString("nombre");
                 String referencia = resultado.getString("referencia");
                 String caracteristicas = resultado.getString("caracteristicas");
@@ -162,7 +162,7 @@ public class ProductoDao implements IProducto {
             
             while(resultado.next())
             {
-                int nit = resultado.getInt("nit");
+                int nit = resultado.getInt("idproducto");
                 String nombre = resultado.getString("nombre");
                 String referencia = resultado.getString("referencia");
                 String caracteristicas = resultado.getString("caracteristicas");

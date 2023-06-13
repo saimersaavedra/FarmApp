@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 
-const AgregarProducto = ({ createProducto}) => {
-  const [newProducto, setNewProducto] = useState({nit: '', nombre: '', referencia: '', caracteristicas: '', efectos_secundarios: '', fecha_vencimiento: '', imagen:'', precio:'', calidad: '', nivelPrecio:''});
+const AgregarProducto = ({ createFarmaceutico}) => {
+  const [newProducto, setNewProducto] = useState({idproducto: '', nombre: '', referencia: '', caracteristicas: '', efectos_secundarios: '', fecha_vencimiento: '', imagen:'', precio:'', calidad: '', nivelPrecio:''});
 
   const handleInputChange = (e) => {
     setNewProducto({ ...newProducto, [e.target.name]: e.target.value });
@@ -10,8 +10,8 @@ const AgregarProducto = ({ createProducto}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createProducto(newProducto);
-    setNewProducto({ nit: '', nombre: '', referencia: '', caracteristicas: '', efectos_secundarios: '', fecha_vencimiento: '', imagen:'', precio:'', calidad: '', nivelPrecio:''});
+    createFarmaceutico(newProducto);
+    setNewProducto({ idproducto: '', nombre: '', referencia: '', caracteristicas: '', efectos_secundarios: '', fecha_vencimiento: '', imagen:'', precio:'', calidad: '', nivelPrecio:''});
   };
 
   return (
@@ -23,14 +23,14 @@ const AgregarProducto = ({ createProducto}) => {
             <div className='col-md-6'>
               <h6>Registrar producto</h6>
               <hr />
-                <div className='form-group'>
+               
                 <form onSubmit={handleSubmit}>
-                  <label className='mb-1'>NIT</label>
+                <label className="mb-1">NIT</label>
                   <input
                     type="text"
                     className='form-control'
-                    name="nit"
-                    value={newProducto.nit}
+                    name="idproducto"
+                    value={newProducto.idproducto}
                     onChange={handleInputChange}
                     placeholder="NIT"
                   />
@@ -117,7 +117,7 @@ const AgregarProducto = ({ createProducto}) => {
                   />
                   <button className='btn btn-primary shadow w-100' type="submit">Agregar</button>
                   </form>
-                </div>
+              
             </div>
           </div>
         </div>
