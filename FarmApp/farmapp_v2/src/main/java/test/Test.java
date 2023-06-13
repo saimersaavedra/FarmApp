@@ -14,11 +14,13 @@ public class Test {
       public static void main(String[] args) {
      /* TEST */
         //int id, String direccion, String cliente, float total, Farmaceutico farmaceutico
-        PedidoDao pedidoDao = new PedidoDao();
-        
-        Pedido dos = new Pedido(1,"av 2", "saimer", 2,new Farmaceutico("1111"));
-        pedidoDao.Insertar(dos);
-        
+                List<Producto> productos = new ArrayList();
+        ProductoDao producDao = new ProductoDao();
+
+        productos = producDao.consultar();
+        for (Producto produc : productos) {
+            System.out.println(produc.getNombre());
+        }
        // Pedido n = new Pedido(128);
          // System.out.println("Resultado :"+pedidoDao.consultarId(n));
       /*
@@ -40,12 +42,8 @@ public class Test {
 
         INSERTAR
         System.out.println("Resultado: "+producDao.Insertar(tres));
-        List<Producto> productos = new ArrayList();
        // CONSULTAR
-        productos = producDao.consultar();
-        for (Producto produc : productos) {
-            System.out.println(produc.getNombre());
-        }
+        
         ProductoDao producDao = new ProductoDao();
         List<Producto> productos = new ArrayList();
        // CONSULTAR_REFERENCIA
@@ -53,7 +51,6 @@ public class Test {
         for (Producto produc : productos) {
             System.out.println(produc.toString());
         }
-        ProductoDao producDao = new ProductoDao();
         List<Producto> productos = new ArrayList();
        // CONSULTAR_REFERENCIA
         productos = producDao.filtro("nombre","ja");

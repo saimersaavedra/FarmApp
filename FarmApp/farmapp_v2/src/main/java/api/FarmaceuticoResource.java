@@ -45,7 +45,6 @@ public class FarmaceuticoResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response crear(Farmaceutico farma)
-            
     {
         try{
             farmaDao.Insertar(farma);

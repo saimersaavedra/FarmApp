@@ -22,11 +22,11 @@ public class PedidoDao implements IPedido {
     final static String SQL_CONSULTAR = "SELECT pe.id_pedido, f.nombre, pe.cliente, pr.id_producto, pr.precio ,pe.total, pr.referencia, pe.direccion, pe.fechaPedido "
             + "FROM Farmaceutico f, pedido pe, producto pr, detalle proc_pedi "
             + "WHERE f.cedula = pe.id_farmaceutico AND pe.id_pedido = proc_pedi.id_pedido "
-            + "AND pr.id_producto = proc_pedi.id_producto";
+            + "AND pr.nit = proc_pedi.nit";
     final static String SQL_CONSULTARID = "SELECT pe.id_pedido, f.nombre, pe.cliente, pr.id_producto, pr.precio ,pe.total, pr.referencia, pe.direccion, pe.fechaPedido "
             + "FROM Farmaceutico f, pedido pe, producto pr, detalle proc_pedi "
             + "WHERE f.cedula = pe.id_farmaceutico AND pe.id_pedido = ? "
-            + "AND pr.id_producto = proc_pedi.id_producto";
+            + "AND pr.nit = proc_pedi.nit";
     final static String SQL_INSERTAR = "INSERT INTO "
             + "pedido(id_pedido, direccion, cliente, fechaPedido, total, id_farmaceutico) "
             + "VALUES(?,?,?,?,?,?)";

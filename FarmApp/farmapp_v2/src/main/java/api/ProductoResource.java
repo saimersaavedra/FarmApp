@@ -32,9 +32,9 @@ public class ProductoResource {
                 .build();
     }
    @GET
-   @Path("/producto/{id_producto}")
+   @Path("/producto/{nit}")
    @Produces(MediaType.APPLICATION_JSON)
-    public Response consultarId(@PathParam("id_producto") int id_producto){
+    public Response consultarId(@PathParam("nit") int id_producto){
         Producto producto = new Producto(id_producto);
         return Response
                 .status(200)
@@ -68,9 +68,9 @@ public class ProductoResource {
         } 
     } 
      @DELETE
-    @Path("/producto/{id_producto}")
+    @Path("/producto/{nit}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response borrar(@PathParam("id_producto") int id_producto) {
+    public Response borrar(@PathParam("nit") int id_producto) {
         Producto producto = new Producto(id_producto);
         int i = producDao.borrar(producto);
         if (i == 0) {
