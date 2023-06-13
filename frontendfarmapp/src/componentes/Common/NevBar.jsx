@@ -19,6 +19,7 @@ function NevBar() {
         </form>
         
       </div>
+      <div>
       <u3 class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                       <Link to="/" class="nav-link active">Home</Link>
@@ -27,12 +28,14 @@ function NevBar() {
                       <Link to="/productos" class="nav-link active">Productos</Link>
                     </li>
                     <li class="nav-item">
-                      <Link to="/contacto" class="nav-link active">Farmaceutico</Link>
+                      <Link to="/farmaceutico" class="nav-link active">Farmaceutico</Link>
                     </li>
                     <li class="nav-item">
                       <Link to="/inventario" class="nav-link active">Inventario</Link>
                     </li>
           </u3>
+      </div>
+      
     </div>
   </nav>
   )

@@ -8,7 +8,7 @@ public class Producto {
     private String referencia;
     private String caracteristicas;
     private String efectSecundarios;
-    private String fecha;
+    private Date fecha;
     private String imagen;
     private float precio;
     private String nivelPrecio;
@@ -30,7 +30,7 @@ public class Producto {
         return "Producto{" +", referencia=" + referencia +", id="+id+", precio="+precio+'}';
     }
 
-    public Producto(int id, String nombre, String referencia, String caracteristicas, String efectSecundarios, String fecha, String imagen, float precio, String nivelPrecio, String calidad) {
+    public Producto(int id, String nombre, String referencia, String caracteristicas, String efectSecundarios, Date fecha, String imagen, float precio, String nivelPrecio, String calidad) {
         this.id = id;
         this.nombre = nombre;
         this.referencia = referencia;
@@ -116,14 +116,14 @@ public class Producto {
     /**
      * @return the fecha
      */
-    public String getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
     /**
      * @param fecha the fecha to set
      */
-    public void setFecha(String fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 

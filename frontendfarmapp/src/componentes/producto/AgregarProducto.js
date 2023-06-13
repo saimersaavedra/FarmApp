@@ -20,10 +20,8 @@ const AgregarProducto = ({ createFarmaceutico}) => {
       <div className='card shadow'>
         <div className='card-body'>
           <div className='row'>
-            <div className='col-md-6'>
               <h6>Registrar producto</h6>
               <hr />
-               
                 <form onSubmit={handleSubmit}>
                 <label className="mb-1">NIT</label>
                   <input
@@ -32,7 +30,7 @@ const AgregarProducto = ({ createFarmaceutico}) => {
                     name="idproducto"
                     value={newProducto.idproducto}
                     onChange={handleInputChange}
-                    placeholder="NIT"
+                    placeholder="nit"
                   />
                    <label className="mb-1">Nombre</label>
                   <input
@@ -115,6 +113,7 @@ const AgregarProducto = ({ createFarmaceutico}) => {
                     onChange={handleInputChange}
                     placeholder="NIVEL PRECIO"
                   />
+                  <hr/>
                   <button className='btn btn-primary shadow w-100' type="submit">Agregar</button>
                   </form>
               
@@ -122,7 +121,6 @@ const AgregarProducto = ({ createFarmaceutico}) => {
           </div>
         </div>
       </div>
-    </div>
   </section>
   );
 };

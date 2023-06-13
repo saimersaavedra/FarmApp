@@ -1,9 +1,10 @@
 import "./farmaceuticos.css"
+import Farmaceutico from "../../componentes/farmaceutico/Farmaceutico"
 
 const Farmaceuticos = () => {
   return (
     <div className="container">
-      <h2>Farmaceuticos</h2>
+            <Farmaceutico/>
     </div>
   )
 }

@@ -11,7 +11,7 @@ const CardProducto = ({data, borrarProducto}) => {
                     data.length > 0 ? (
                         data.map((tie) => (
                             <Card
-                            key ={tie.nit}
+                            key ={tie.idproducto}
                             tie = {tie}  
                             borrarProducto = {borrarProducto} 
                                                      />

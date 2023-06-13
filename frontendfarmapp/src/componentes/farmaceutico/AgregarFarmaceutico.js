@@ -23,9 +23,6 @@ const AgregarFarmaceutico = ({ createFarmaceutico }) => {
             <h6>Registrar farmaceutico</h6>
             <form onSubmit={handleSubmit}>
             <hr />
-
-              <div className='col-md-6'>
-
               <label className="mb-1">Cedula</label>
                   <input
                     type="text"
@@ -53,8 +50,6 @@ const AgregarFarmaceutico = ({ createFarmaceutico }) => {
                     onChange={handleInputChange}
                     placeholder="APELLIDO"
                   />
-              </div>
-              <div className='col-md-6'>
               <label className="mb-1">Telefono</label>
                 <input
                   type="text"
@@ -91,15 +86,11 @@ const AgregarFarmaceutico = ({ createFarmaceutico }) => {
                   onChange={handleInputChange}
                   placeholder="NIVEL"
                 />
-              </div>
                    <hr/>
                    <button className='btn btn-primary shadow w-100' type="submit">Agregar</button>
                 </form>
               </div>
-              
             </div>
-            
-
           </div>
       </div>
     </section>

@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 import red.BaseDatos;
 
 public class ProductoDao implements IProducto {
-    final static String SQL_INSERTAR = "INSERT INTO producto(idproducto, nombre, referencia, caracteristicas, efectos_secundarios, imagen,fecha_vencimiento,precio, calidad, nivelPrecio) VALUES(?,?,?,?,?,?,?,,?,?,?)";
+    final static String SQL_INSERTAR = "INSERT INTO producto(idproducto, nombre, referencia, caracteristicas, efectos_secundarios, imagen,fecha_vencimiento,precio, calidad, nivelPrecio) VALUES(?,?,?,?,?,?,?,?,?,?)";
     final static String SQL_BORRAR = "DELETE FROM producto WHERE idproducto = ?";
     final static String SQL_ACTUALIZAR = "UPDATE producto SET nombre = ?, referencia = ?, caracteristicas = ?, efectos_secundarios = ?, imagen = ?, fecha_vencimiento = ?, precio =?, calidad = ?, nivelPrecio = ? WHERE idproducto = ?";
     final static String SQL_CONSULTAR = "SELECT * FROM producto";
@@ -33,7 +33,7 @@ public class ProductoDao implements IProducto {
             sentencia.setString(4,producto.getCaracteristicas());
             sentencia.setString(5,producto.getEfectSecundarios());
             sentencia.setString(6,producto.getImagen());
-            sentencia.setString(7,producto.getFecha());
+            sentencia.setDate(7,producto.getFecha());
             sentencia.setFloat(8,producto.getPrecio());
             sentencia.setString(9,producto.getCalidad());
             sentencia.setString(10,producto.getNivelPrecio());
@@ -74,7 +74,7 @@ public class ProductoDao implements IProducto {
                 String referencia = resultado.getString("referencia");
                 String caracteristicas = resultado.getString("caracteristicas");
                 String efectosSecundarios = resultado.getString("efectos_secundarios");
-                String fecha = resultado.getString("fecha_vencimiento");
+                Date fecha = resultado.getDate("fecha_vencimiento");
                 String imagen = resultado.getString("imagen");
                 String calidad = resultado.getString("calidad");
                 String nivelPrecio = resultado.getString("nivelPrecio");
@@ -121,7 +121,7 @@ public class ProductoDao implements IProducto {
                 String referencia = resultado.getString("referencia");
                 String caracteristicas = resultado.getString("caracteristicas");
                 String efectosSecundarios = resultado.getString("efectos_secundarios");
-                String fecha = resultado.getString("fecha_vencimiento");
+                Date fecha = resultado.getDate("fecha_vencimiento");
                 String imagen = resultado.getString("imagen");
                 String calidad = resultado.getString("calidad");
                 String nivelPrecio = resultado.getString("nivelPrecio");
@@ -167,7 +167,7 @@ public class ProductoDao implements IProducto {
                 String referencia = resultado.getString("referencia");
                 String caracteristicas = resultado.getString("caracteristicas");
                 String efectosSecundarios = resultado.getString("efectos_secundarios");
-                String fecha = resultado.getString("fecha_vencimiento");
+                Date fecha = resultado.getDate("fecha_vencimiento");
                 String imagen = resultado.getString("imagen");
                 String calidad = resultado.getString("calidad");
                 String nivelPrecio = resultado.getString("nivelPrecio");
@@ -241,7 +241,7 @@ public class ProductoDao implements IProducto {
             sentencia.setString(3,producto.getCaracteristicas());
             sentencia.setString(4,producto.getEfectSecundarios());
             sentencia.setString(5,producto.getImagen());
-            sentencia.setString(6,producto.getFecha());
+            sentencia.setDate(6,producto.getFecha());
             sentencia.setFloat(7,producto.getPrecio());
             sentencia.setString(8,producto.getCalidad());
             sentencia.setString(9,producto.getNivelPrecio());
