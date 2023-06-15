@@ -1,12 +1,12 @@
 import "./farmaceuticos.css"
-import Farmaceutico from "../../componentes/farmaceutico/Farmaceutico"
+import Farmaceutico from "../../componentes/farmaceutico/Farmaceutico";
 
 const Farmaceuticos = () => {
   return (
     <div className="container">
-            <Farmaceutico/>
+      <Farmaceutico/>
     </div>
   )
 }
 
-export default Farmaceuticos
+export default Farmaceuticos;

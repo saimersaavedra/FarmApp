@@ -1,6 +1,7 @@
 import React from 'react';
+import {Spinner } from 'react-bootstrap';
 
-const FilaTabla = ({tie, deleteFarmaceutico}) => 
+const FilaTabla = ({tie, deleteFarmaceutico,  editarTurista, loading}) => 
 {
     return (
         <tr>
@@ -12,10 +13,12 @@ const FilaTabla = ({tie, deleteFarmaceutico}) =>
             <td>{tie.direccion}</td>
             <td>{tie.nivel}</td>
             <td>
-            <button class="btn btn-warning">Actualizar</button>
+            <button class="btn btn-outline-secondary" onClick={() => editarTurista(tie.cedula)} disabled={loading}>
+            {loading && <Spinner animation="border" size="sm" />}
+                Actualizar</button>
             </td>
             <td>
-            <button class="btn btn-danger" onClick={() => deleteFarmaceutico(tie.cedula)}>Eliminar</button>
+            <button class="btn btn-outline-danger" onClick={() => deleteFarmaceutico(tie.cedula)}>Eliminar</button>
             </td>
         </tr>
         

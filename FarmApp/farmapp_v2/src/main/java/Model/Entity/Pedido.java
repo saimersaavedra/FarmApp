@@ -10,10 +10,11 @@ public class Pedido {
     private Date Fecha;
     private float total;
     private Farmaceutico farmaceutico;
-    private List<Producto> productos;
+    private Producto productos;
+    private Producto producton;
  //f.nombre, f.apellido, pe.cliente, pe.total, pr.nombre, pr.referencia 
     
-    public Pedido(int id,Farmaceutico farmaceutico, String cliente, float total, List<Producto> producto, String direccion, Date fecha)
+    public Pedido(int id,Farmaceutico farmaceutico, String cliente, float total, Producto producto, String direccion, Date fecha)
     {
         this.id = id;
         this.cliente = cliente;
@@ -22,6 +23,7 @@ public class Pedido {
         this.total = total;
         this.farmaceutico = farmaceutico;
         this.productos = producto;
+        this.producton = producton;
     }  
 
     public Pedido(int id, String direccion, String cliente, float total, Farmaceutico fasrmaceutico) {
@@ -41,7 +43,7 @@ public class Pedido {
         this.farmaceutico = farmaceutico;
     }
 
-    public Pedido(int id, String direccion, String cliente, List<Producto> productos, Date Fecha, float total, Farmaceutico farmaceutico) {
+    public Pedido(int id, String direccion, String cliente, Producto productos, Date Fecha, float total, Farmaceutico farmaceutico) {
         this.id = id;
         this.direccion = direccion;
         this.cliente = cliente;
@@ -148,11 +150,11 @@ public class Pedido {
     public void setFarmaceutico(Farmaceutico farmaceutico) {
         this.farmaceutico = farmaceutico;
     }
-      public void setProductos(List<Producto> productos) {
+      public void setProductos(Producto productos) {
         this.productos = productos;
     }
 
-    public List<Producto> getProductos() {
+    public Producto getProductos() {
         return productos;
     }
 

@@ -1,26 +1,40 @@
-import React, { useState } from 'react';
+import React, {useState, useEffect } from 'react';
+import { Button, Modal } from 'react-bootstrap';
 
+const ModalTurista = ({ show, handleClose, tur, modificarTurista}) => {
 
-const AgregarFarmaceutico = ({ createFarmaceutico }) => {
-  const [newFarmaceutico, setNewFarmaceutico] = useState({ cedula: '', nombre: '', apellido: '', telefono: '', correo: '', direccion: '', nivel: '' });
+  const [newTurista, setNewTurista] = useState({cedula: '', nombre: '', apellido: '', telefono: '', correo: '', direccion: '', nivel: '' });
+  useEffect(() => {
+    if(show){
+      setNewTurista(tur);
+    }
+  }, [show, tur]);
 
   const handleInputChange = (e) => {
-    setNewFarmaceutico({ ...newFarmaceutico, [e.target.name]: e.target.value });
+    setNewTurista({ ...newTurista, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createFarmaceutico(newFarmaceutico);
-    setNewFarmaceutico({ cedula: '', nombre: '', apellido: '', telefono: '', correo: '', direccion: '', nivel: '' });
+    modificarTurista(newTurista);
+    setNewTurista({ cedula: '', nombre: '', apellido: '', telefono: '', correo: '', direccion: '', nivel: ''});
+    handleClose();
   };
 
-  return (
-    <section className='section'>
+
+    return (
+        <>
+         
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Actualización de datos</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+          <section className='section'>
       <div className='container'>
         <div className='card shadow'>
           <div className='card-body'>
             <div className='row'>
-            <h6>Registrar farmaceutico</h6>
             <form onSubmit={handleSubmit}>
             <hr />
               <label className="mb-1">Cedula</label>
@@ -28,7 +42,7 @@ const AgregarFarmaceutico = ({ createFarmaceutico }) => {
                     type="text"
                     className='form-control'
                     name="cedula"
-                    value={newFarmaceutico.cedula}
+                    value={newTurista.cedula}
                     onChange={handleInputChange}
                     placeholder="CEDULA"
                   />
@@ -37,7 +51,7 @@ const AgregarFarmaceutico = ({ createFarmaceutico }) => {
                     type="text"
                     className='form-control'
                     name="nombre"
-                    value={newFarmaceutico.nombre}
+                    value={newTurista.nombre}
                     onChange={handleInputChange}
                     placeholder="NOMBRE"
                   />
@@ -46,7 +60,7 @@ const AgregarFarmaceutico = ({ createFarmaceutico }) => {
                     type="text"
                     className='form-control'
                     name="apellido"
-                    value={newFarmaceutico.apellido}
+                    value={newTurista.apellido}
                     onChange={handleInputChange}
                     placeholder="APELLIDO"
                   />
@@ -55,7 +69,7 @@ const AgregarFarmaceutico = ({ createFarmaceutico }) => {
                   type="text"
                   className='form-control'
                   name="telefono"
-                  value={newFarmaceutico.telefono}
+                  value={newTurista.telefono}
                   onChange={handleInputChange}
                   placeholder="TELEFONO"
                 />
@@ -64,7 +78,7 @@ const AgregarFarmaceutico = ({ createFarmaceutico }) => {
                   type="text"
                   className='form-control'
                   name="correo"
-                  value={newFarmaceutico.correo}
+                  value={newTurista.correo}
                   onChange={handleInputChange}
                   placeholder="CORREO ELECTRONICO"
                 />
@@ -73,7 +87,7 @@ const AgregarFarmaceutico = ({ createFarmaceutico }) => {
                   type="text"
                   className='form-control'
                   name="direccion"
-                  value={newFarmaceutico.direccion}
+                  value={newTurista.direccion}
                   onChange={handleInputChange}
                   placeholder="DIRECCION"
                 />
@@ -82,20 +96,29 @@ const AgregarFarmaceutico = ({ createFarmaceutico }) => {
                   type="text"
                   className='form-control'
                   name="nivel"
-                  value={newFarmaceutico.nivel}
+                  value={newTurista.nivel}
                   onChange={handleInputChange}
                   placeholder="NIVEL"
                 />
                    <hr/>
-                   <button className='btn btn-primary shadow w-100' type="submit">Registrar</button>
                 </form>
               </div>
             </div>
           </div>
       </div>
     </section>
-
-  );
+    </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Cerrar
+            </Button>
+            <Button variant="primary" onClick={handleSubmit}>
+              Guardar cambios
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </>
+    );
 };
 
-export default AgregarFarmaceutico;
+export default ModalTurista;

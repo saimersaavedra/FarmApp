@@ -19,11 +19,8 @@ public class PedidoDao implements IPedido {
     final static String SQL_ACTUALIZAR = "UPDATE pedido "
             + "SET direccion = ?, cliente = ?, fechaPedido = ?, total = ?, id_farmaceutico = ? "
             + "WHERE id_pedido = ?";
-    final static String SQL_CONSULTAR = "SELECT pe.id_pedido, f.nombre, pe.cliente, pr.id_producto, pr.precio ,pe.total, pr.referencia, pe.direccion, pe.fechaPedido "
-            + "FROM Farmaceutico f, pedido pe, producto pr, detalle proc_pedi "
-            + "WHERE f.cedula = pe.id_farmaceutico AND pe.id_pedido = proc_pedi.id_pedido "
-            + "AND pr.nit = proc_pedi.nit";
-    final static String SQL_CONSULTARID = "SELECT pe.id_pedido, f.nombre, pe.cliente, pr.id_producto, pr.precio ,pe.total, pr.referencia, pe.direccion, pe.fechaPedido "
+    final static String SQL_CONSULTAR = "SELECT pe.id_pedido, pe.id_farmaceutico,pe.cliente, pr.idproducto,pe.total, pe.direccion, pe.fechaPedido FROM pedido pe, producto pr, detalle proc_pedi WHERE pr.idproducto = proc_pedi.id_producto AND pe.id_pedido = proc_pedi.id_pedido";
+    final static String SQL_CONSULTARID = "SELECT pe.id_pedido, f.nombre, pe.cliente, pr.idproducto, pr.precio ,pe.total, pr.referencia, pe.direccion, pe.fechaPedido "
             + "FROM Farmaceutico f, pedido pe, producto pr, detalle proc_pedi "
             + "WHERE f.cedula = pe.id_farmaceutico AND pe.id_pedido = ? "
             + "AND pr.nit = proc_pedi.nit";
@@ -45,18 +42,14 @@ public class PedidoDao implements IPedido {
             {
                 Farmaceutico nombre = new Farmaceutico();
                 Producto producto = new Producto();
-                List<Producto> productos = new ArrayList<>();
                 int id = resultado.getInt("id_pedido");
-                nombre.setNombre(resultado.getString("nombre"));
+                nombre.setCedula(resultado.getString("id_farmaceutico"));
                 String cliente = resultado.getString("cliente");
+                producto.setId(resultado.getInt("idproducto"));
                 float total = resultado.getFloat("total");
-                producto.setReferencia(resultado.getString("referencia"));
-                producto.setId(resultado.getInt("id_producto"));
-                producto.setPrecio(resultado.getFloat("precio"));
-                productos.add(producto);
                 String direccion = resultado.getString("direccion");
                 Date fecha = resultado.getDate("fechaPedido");
-                Pedido pedido = new Pedido(id,nombre, cliente, total, productos, direccion, fecha);
+                Pedido pedido = new Pedido(id,nombre, cliente, total, producto,direccion, fecha);
                 pedidos.add(pedido);
             }
            
@@ -129,7 +122,6 @@ public class PedidoDao implements IPedido {
                 
                 Farmaceutico nombre = new Farmaceutico();
                 Producto producto = new Producto();
-                List<Producto> productos = new ArrayList<>();
                 int id = resultado.getInt("id_pedido");
                 nombre.setNombre(resultado.getString("nombre"));
                 String cliente = resultado.getString("cliente");
@@ -137,10 +129,9 @@ public class PedidoDao implements IPedido {
                 producto.setReferencia(resultado.getString("referencia"));
                 producto.setId(resultado.getInt("id_producto"));
                 producto.setPrecio(resultado.getFloat("precio"));
-                productos.add(producto);
                 String direccion = resultado.getString("direccion");
                 Date fecha = resultado.getDate("fechaPedido");
-                rPed = new Pedido(id,nombre, cliente, total, productos, direccion, fecha);
+                rPed = new Pedido(id,nombre, cliente, total, producto, producton,direccion, fecha);
             
            
         } catch (SQLException ex) {

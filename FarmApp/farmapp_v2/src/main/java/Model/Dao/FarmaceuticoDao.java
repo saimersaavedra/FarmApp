@@ -181,6 +181,7 @@ Connection connection = null;
             int resultado = 0;
         try {
             connection = BaseDatos.getConnection();
+            sentencia = connection.prepareStatement(SQL_ACTUALIZAR);
             sentencia.setString(1, farma.getNombre());
             sentencia.setString(2, farma.getApellido());
             sentencia.setString(3, farma.getTelefono());

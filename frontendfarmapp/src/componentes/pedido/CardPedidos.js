@@ -1,8 +1,7 @@
-
 import React from 'react';
-import Card from './CardP';
+import Card from './CardPe';
 
-const CardProducto = ({data, borrarProducto}) => {
+const CardPedidos = ({data, borrarPedido}) => {
     return (
         <div>
             <div class="row row-cols-1 row-cols-md-3 g-4"  >
@@ -10,9 +9,9 @@ const CardProducto = ({data, borrarProducto}) => {
                     data.length > 0 ? (
                         data.map((tie) => (
                             <Card
-                            key ={tie.idproducto}
+                            key ={tie.id_pedido}
                             tie = {tie}  
-                            borrarProducto = {borrarProducto} 
+                            borrarPedido = {borrarPedido}
                                                      />
                         ))
 
@@ -26,4 +25,4 @@ const CardProducto = ({data, borrarProducto}) => {
     );
 };
 
-export default CardProducto;
+export default CardPedidos;
