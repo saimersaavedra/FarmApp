@@ -131,7 +131,7 @@ public class PedidoDao implements IPedido {
                 producto.setPrecio(resultado.getFloat("precio"));
                 String direccion = resultado.getString("direccion");
                 Date fecha = resultado.getDate("fechaPedido");
-                rPed = new Pedido(id,nombre, cliente, total, producto, producton,direccion, fecha);
+                rPed = new Pedido(id,nombre, cliente, total, producto,direccion, fecha);
             
            
         } catch (SQLException ex) {
