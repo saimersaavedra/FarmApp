@@ -1,73 +1,172 @@
+import React, { useState } from 'react';
+import './NevBar.css'
+import { Link, useHistory } from 'react-router-dom';
+import logo from './logo212.png';
 
-import "./nevbar.css"
-import { Link } from 'react-router-dom'
-import logo from './logo212.png'
 function NevBar() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filterQuery, setFilterQuery] = useState('');
+
+  const updateSearchTerm = e => {
+    setSearchQuery(e.target.value);
+  };
+
+  const updateFilterTerm = e => {
+    setFilterQuery(e.target.value);
+  };
+
+  const history = useHistory();
+
+  const handleSearch = e => {
+    e.preventDefault();
+    if (searchQuery.trim() !== '' && filterQuery.trim() !== '') {
+      history.push(`/search-results/${filterQuery}/${searchQuery}`);
+    }
+  };
+
   return (
-
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-
-        <Link to="/" class="navbar-brand" href="#"><img src={logo} alt="Bootstrap" width="50" height="35" /></Link>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <div className="container-fluid">
+        <Link to="/" className="navbar-brand" href="#">
+          <img src={logo} alt="Bootstrap" width="50" height="35" />
+        </Link>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-            <button class="btn btn-outline-success" type="submit">Buscar</button>
-          </form>
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <div className="search-filter-container">
+            <form className="d-flex" onSubmit={handleSearch}>
+              <div className="input-group mb-3">
+                <select
+                  className="form-select filter-select"
+                  name="filter"
+                  value={filterQuery}
+                  onChange={updateFilterTerm}
+                >
+                  <option value="">Seleccionar filtro</option>
+                  <option value="nombre">nombre</option>
+                  <option value="referencia">referencia</option>
+                  <option value="caracteristicas">características</option>
+                </select>
+              </div>
+              <input
+                className="form-control me-2 search-input"
+                type="text"
+                name="text"
+                placeholder="buscar"
+                value={searchQuery}
+                onChange={updateSearchTerm}
+              />
+              <button
+                className="btn btn-success search-button"
+                type="submit"
+                disabled={!searchQuery.trim()}
+              >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+    </svg>
+              </button>
+            </form>
+          </div>
         </div>
-        <div >
-          <u3 class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <Link to="/" class="nav-link active" href="#">Home</Link>
+        <div>
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <li className="nav-item">
+              <Link to="/" className="nav-link active" href="#">
+                Home
+              </Link>
             </li>
-            <li class="nav-item dropdown">
-              <a href="/#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <li className="nav-item dropdown">
+              <a
+                href="/#"
+                className="nav-link dropdown-toggle"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
                 Productos
               </a>
-              <ul class="dropdown-menu">
+              <ul className="dropdown-menu">
                 <li>
-                  <a href="/#" class="dropdown-item" >
-                    <Link to="/listado_productos" class="nav-link active" href="#">Lista productos</Link>
+                  <a href="/#" className="dropdown-item">
+                    <Link
+                      to="/listado_productos"
+                      className="nav-link active"
+                      href="#"
+                    >
+                      Lista productos
+                    </Link>
                   </a>
                 </li>
                 <li>
-                  <a href="/#" class="dropdown-item" >
-                    <Link to="/inventario" class="nav-link active" href="#">Inventario</Link>
+                  <a href="/#" className="dropdown-item">
+                    <Link
+                      to="/inventario"
+                      className="nav-link active"
+                      href="#"
+                    >
+                      Inventario
+                    </Link>
                   </a>
                 </li>
-
               </ul>
             </li>
-            <li class="nav-item dropdown">
-              <a href="/#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <li className="nav-item dropdown">
+              <a
+                href="/#"
+                className="nav-link dropdown-toggle"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
                 Farmaceutico
               </a>
-              <ul class="dropdown-menu">
+              <ul className="dropdown-menu">
                 <li>
-                  <a href="/#" class="dropdown-item" >
-                    <Link to="/listado_farmaceuticos" class="nav-link active" href="#">Lista farmaceuticos</Link>
-                    </a>
-                    <a href="/#" class="dropdown-item" >
-                    <Link to="/agregar_farmaceutico" class="nav-link active" href="#">Registrar farmaceutico</Link>
-                    </a>
+                  <a href="/#" className="dropdown-item">
+                    <Link
+                      to="/listado_farmaceuticos"
+                      className="nav-link active"
+                      href="#"
+                    >
+                      Lista farmaceuticos
+                    </Link>
+                  </a>
+                  <a href="/#" className="dropdown-item">
+                    <Link
+                      to="/agregar_farmaceutico"
+                      className="nav-link active"
+                      href="#"
+                    >
+                      Registrar farmaceutico
+                    </Link>
+                  </a>
                 </li>
               </ul>
             </li>
-            <li class="nav-item">
-              <Link to="/pedidos" class="nav-link active" href="#">Pedidos</Link>
+            <li className="nav-item">
+              <Link to="/pedidos" className="nav-link active" href="#">
+                Pedidos
+              </Link>
             </li>
-            <li class="nav-item">
-              <Link to="/contacto" class="nav-link active" href="#">Contacto</Link>
+            <li className="nav-item">
+              <Link to="/contacto" className="nav-link active" href="#">
+                Contacto
+              </Link>
             </li>
-
-          </u3>
+          </ul>
         </div>
       </div>
     </nav>
-  )
+  );
 }
 
-export default NevBar
+export default NevBar;

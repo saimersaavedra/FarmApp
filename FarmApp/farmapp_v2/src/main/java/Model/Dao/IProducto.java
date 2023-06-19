@@ -8,7 +8,7 @@ public interface IProducto {
     //existen dos tipos de consulta, toda la tabla, o uno especifica, utilizando la llave primaria
     public List<Producto> consultar(); // para toda la lista
     public Producto consultarId(Producto producto); // para un objecto especifico 
-    public List<Producto> filtro(String columna,String referencia); //para buscar por referencia
+    public List<Producto> filtro(String columna, String referencia); //para buscar por referencia
     public int borrar(Producto producto); 
     public int actualizar(Producto producto);
 }

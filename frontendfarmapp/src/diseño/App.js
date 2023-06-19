@@ -7,41 +7,42 @@ import Inventario from '../pages/inventario/Inventario'
 import Farmaceuticos from '../pages/farmaceuticos/Farmaceuticos'
 import ListadoFarmaceutico from '../pages/ListadoFarmaceutico/ListadoFarmaceutico'
 import Pedido from '../pages/pedidos/Pedido'
+import ListaB from '../componentes/producto/ListaB'
 const App = () => {
   return (
     <div className='container'>
+
       <Router>
-      <div>
         <NavBar />
+          <Route path='/'>
+            <Home />
+          </Route>
 
-        <Route path='/'>
-          <Home/>
-        </Route>
-        
-        <Route path='/agregar_farmaceutico'>
-          <Farmaceuticos/>
-        </Route>
+          <Route path='/agregar_farmaceutico'>
+            <Farmaceuticos />
+          </Route>
 
-        <Route path='/listado_farmaceuticos'>
-          <ListadoFarmaceutico/>
-        </Route>
+          <Route path='/listado_farmaceuticos'>
+            <ListadoFarmaceutico />
+          </Route>
 
-        <Route path='/listado_productos'>
-          <Productos/>
-        </Route>
+          <Route path='/listado_productos'>
+            <Productos />
+          </Route>
 
-        <Route path='/inventario'>
-          <Inventario/>
-        </Route>
+          <Route path='/inventario'>
+            <Inventario />
+          </Route>
 
-        
-        <Route path='/pedidos'>
-          <Pedido/>
-        </Route>
+          <Route path='/search-results/:filterQuery/:searchQuery'>
+            <ListaB />
+          </Route>
 
-      </div>
+          <Route path='/pedidos'>
+            <Pedido />
+          </Route>
       </Router>
-      </div>
+    </div>
   );
 }
 

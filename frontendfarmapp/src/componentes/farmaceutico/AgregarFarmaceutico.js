@@ -20,10 +20,11 @@ const AgregarFarmaceutico = ({ createFarmaceutico }) => {
         <div className='card shadow'>
           <div className='card-body'>
             <div className='row'>
-            <h6>Registrar farmaceutico</h6>
-            <form onSubmit={handleSubmit}>
-            <hr />
-              <label className="mb-1">Cedula</label>
+              <h6>Registrar farmaceutico</h6>
+              <form onSubmit={handleSubmit}>
+                <hr />
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon1">Cedula</span>
                   <input
                     type="text"
                     className='form-control'
@@ -31,8 +32,12 @@ const AgregarFarmaceutico = ({ createFarmaceutico }) => {
                     value={newFarmaceutico.cedula}
                     onChange={handleInputChange}
                     placeholder="CEDULA"
+                    aria-label="Username"
+                    aria-describedby="basic-addon1"
                   />
-                   <label className="mb-1">Nombre</label>
+                </div>
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon1">Nombre</span>
                   <input
                     type="text"
                     className='form-control'
@@ -40,8 +45,12 @@ const AgregarFarmaceutico = ({ createFarmaceutico }) => {
                     value={newFarmaceutico.nombre}
                     onChange={handleInputChange}
                     placeholder="NOMBRE"
+                    aria-label="Username"
+                    aria-describedby="basic-addon1"
                   />
-                   <label className="mb-1">Apellido</label>
+                </div>
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon1">Apellido</span>
                   <input
                     type="text"
                     className='form-control'
@@ -49,49 +58,79 @@ const AgregarFarmaceutico = ({ createFarmaceutico }) => {
                     value={newFarmaceutico.apellido}
                     onChange={handleInputChange}
                     placeholder="APELLIDO"
+                    aria-label="Username"
+                    aria-describedby="basic-addon1"
                   />
-              <label className="mb-1">Telefono</label>
-                <input
-                  type="text"
-                  className='form-control'
-                  name="telefono"
-                  value={newFarmaceutico.telefono}
-                  onChange={handleInputChange}
-                  placeholder="TELEFONO"
-                />
-                 <label className="mb-1">Correo electronico</label>
-                <input
-                  type="text"
-                  className='form-control'
-                  name="correo"
-                  value={newFarmaceutico.correo}
-                  onChange={handleInputChange}
-                  placeholder="CORREO ELECTRONICO"
-                />
-                 <label className="mb-1">Direccion</label>
-                <input
-                  type="text"
-                  className='form-control'
-                  name="direccion"
-                  value={newFarmaceutico.direccion}
-                  onChange={handleInputChange}
-                  placeholder="DIRECCION"
-                />
-                 <label className="mb-1">Nivel</label>
-                <input
-                  type="text"
-                  className='form-control'
-                  name="nivel"
-                  value={newFarmaceutico.nivel}
-                  onChange={handleInputChange}
-                  placeholder="NIVEL"
-                />
-                   <hr/>
-                   <button className='btn btn-primary shadow w-100' type="submit">Registrar</button>
-                </form>
-              </div>
+                </div>
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon1">Telefono</span>
+                  <input
+                    type="text"
+                    className='form-control'
+                    name="telefono"
+                    value={newFarmaceutico.telefono}
+                    onChange={handleInputChange}
+                    placeholder="TELEFONO"
+                    aria-label="Username"
+                    aria-describedby="basic-addon1"
+                  />
+                </div>
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon1">Correo electronico</span>
+                  <input
+                    type="text"
+                    className='form-control'
+                    name="correo"
+                    value={newFarmaceutico.correo}
+                    onChange={handleInputChange}
+                    placeholder="CORREO ELECTRONICO"
+                    aria-label="Username"
+                    aria-describedby="basic-addon1"
+                  />
+                </div>
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon1">Direccion</span>
+                  <input
+                    type="text"
+                    className='form-control'
+                    name="direccion"
+                    value={newFarmaceutico.direccion}
+                    onChange={handleInputChange}
+                    placeholder="DIRECCION"
+                    aria-label="Username"
+                    aria-describedby="basic-addon1"
+                  />
+                </div>
+                <div class="input-group mb-3">
+                  <label class="input-group-text" for="inputGroupSelect01">Nivel-empresa</label>
+                  <select class="form-select" id="inputGroupSelect01">
+                    <option selected>Elegir...</option>
+                    <option type="text"
+                      className='form-control'
+                      name="nivel"
+                      value={newFarmaceutico.nivel}
+                      onChange={handleInputChange}
+                      placeholder="NIVEL">Jefe</option>
+                    <option type="text"
+                      className='form-control'
+                      name="nivel"
+                      value={newFarmaceutico.nivel}
+                      onChange={handleInputChange}
+                      placeholder="NIVEL">Gerente</option>
+                    <option type="text"
+                      className='form-control'
+                      name="nivel"
+                      value={newFarmaceutico.nivel}
+                      onChange={handleInputChange}
+                      placeholder="NIVEL">Empleado</option>
+                  </select>
+                </div>
+                <hr />
+                <button className='btn btn-primary shadow w-100' type="submit">Registrar</button>
+              </form>
             </div>
           </div>
+        </div>
       </div>
     </section>
 

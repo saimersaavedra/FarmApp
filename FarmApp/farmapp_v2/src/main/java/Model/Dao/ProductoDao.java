@@ -148,7 +148,7 @@ public class ProductoDao implements IProducto {
            return rProducto;
     }
     @Override
-    public List<Producto> filtro(String columna,String ref) {
+    public List<Producto> filtro(String colum, String ref) {
         Connection connection = null;
         Statement sentencia = null;
         ResultSet resultado = null;
@@ -158,7 +158,7 @@ public class ProductoDao implements IProducto {
             
             connection = BaseDatos.getConnection();
             sentencia = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.TYPE_FORWARD_ONLY);
-            resultado = sentencia.executeQuery( "SELECT * FROM producto WHERE "+columna+" LIKE '%"+ref+"%'");
+            resultado = sentencia.executeQuery( "SELECT * FROM producto WHERE "+colum+" LIKE '%"+ref+"%'");
             
             while(resultado.next())
             {

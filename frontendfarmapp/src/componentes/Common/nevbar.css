@@ -1,0 +1,25 @@
+.search-filter-container {
+    display: flex;
+    align-items: center;
+    margin-right: 100px;
+    height: 40px;
+  }
+  
+  .filter-select {
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+  }
+  
+  .search-input {
+    flex-grow: 1;
+    height: 40px;
+    margin-right: 5px;
+  }
+  
+  .search-button {
+    height: 40px;
+    margin-left: 0px;
+  }
+  
+  

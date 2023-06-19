@@ -1,5 +1,5 @@
 import FarmaceuticoListado from "../../componentes/farmaceutico/FarmaceuticoListado";
-
+import './ListadoFarmaceutico.css'
 const ListadoFarmaceutico = () => {
   return (
     <div className="container-sm" >

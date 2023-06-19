@@ -44,11 +44,11 @@ public class ProductoResource {
     @GET
    @Path("/producto/filtro/{columna}/{referencia}")
    @Produces(MediaType.APPLICATION_JSON)
-    public Response filtro(@PathParam("columna") String columna,@PathParam("referencia") String referencia){
+    public Response filtro(@PathParam("columna") String columna, @PathParam("referencia") String referencia){
         Producto producto = new Producto(referencia);
         return Response
                 .status(200)
-                .entity(producDao.filtro(columna, referencia))
+                .entity(producDao.filtro(columna,referencia))
                 .build();
     }
      @POST

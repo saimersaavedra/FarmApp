@@ -17,7 +17,7 @@ public class Test {
                 List<Producto> productos = new ArrayList();
         ProductoDao producDao = new ProductoDao();
 
-        productos = producDao.consultar();
+        productos = producDao.filtro("nombre","omega");
         for (Producto produc : productos) {
             System.out.println(produc.getNombre());
         }
