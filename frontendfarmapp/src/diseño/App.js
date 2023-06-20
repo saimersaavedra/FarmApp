@@ -14,7 +14,7 @@ const App = () => {
 
       <Router>
         <NavBar />
-          <Route path='/'>
+          <Route path='/home'>
             <Home />
           </Route>
 

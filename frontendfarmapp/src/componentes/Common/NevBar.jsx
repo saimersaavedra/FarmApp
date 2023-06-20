@@ -27,7 +27,7 @@ function NevBar() {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
-        <Link to="/" className="navbar-brand" href="#">
+        <Link to="/home" className="navbar-brand" href="#">
           <img src={logo} alt="Bootstrap" width="50" height="35" />
         </Link>
         <button
@@ -54,7 +54,7 @@ function NevBar() {
                   <option value="">Seleccionar filtro</option>
                   <option value="nombre">nombre</option>
                   <option value="referencia">referencia</option>
-                  <option value="caracteristicas">características</option>
+                  <option value="caracteristicas">caracteristicas</option>
                 </select>
               </div>
               <input
@@ -80,41 +80,36 @@ function NevBar() {
         <div>
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link to="/" className="nav-link active" href="#">
+              <Link to="/home" className="nav-link active" href="#">
                 Home
               </Link>
             </li>
             <li className="nav-item dropdown">
-              <a
-                href="/#"
-                className="nav-link dropdown-toggle"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Productos
+              <a 
+              href="/#"
+              className="nav-link dropdown-toggle"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false">
+                Producto
               </a>
               <ul className="dropdown-menu">
                 <li>
-                  <a href="/#" className="dropdown-item">
-                    <Link
-                      to="/listado_productos"
-                      className="nav-link active"
-                      href="#"
-                    >
-                      Lista productos
-                    </Link>
+                  <a 
+                  href="/#" 
+                  className="dropdown-item" >
+                    <Link 
+                    to="/listado_productos" 
+                    class="nav-link active" 
+                    href="#">Lista productos</Link>
                   </a>
-                </li>
-                <li>
-                  <a href="/#" className="dropdown-item">
-                    <Link
-                      to="/inventario"
-                      className="nav-link active"
-                      href="#"
-                    >
-                      Inventario
-                    </Link>
+                  <a 
+                  href="/#" 
+                  className="dropdown-item" >
+                    <Link 
+                    to="/inventario" 
+                    class="nav-link active" 
+                    href="#">Inventario</Link>
                   </a>
                 </li>
               </ul>
